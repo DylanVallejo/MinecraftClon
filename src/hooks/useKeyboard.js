@@ -28,17 +28,17 @@ export const useKeyboard = () => {
         moveLeft:false,
         moveRight:false,
         jump: false,
-        texture1:false,
-        texture2:false,
-        texture3:false,
-        texture4:false,
-        texture5:false,
+        dirt:false,
+        grass:false,
+        glass:false,
+        wood:false,
+        log:false,
     })
     
     
     // setting actions on  true
     const handleKeyDown = useCallback((e) =>{
-        console.log(e)
+        // console.log(e)
         const action = actionByKey(e.code)
         if(actionByKey(e.code)){
             setActions((prev) => {
@@ -76,6 +76,8 @@ export const useKeyboard = () => {
             
         }
     }, [handleKeyDown,handleKeyUp])
+    
+    console.log('actions',actions)
     
     return actions
     
