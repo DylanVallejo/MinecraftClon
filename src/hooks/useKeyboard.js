@@ -38,7 +38,8 @@ export const useKeyboard = () => {
     
     // setting actions on  true
     const handleKeyDown = useCallback((e) =>{
-        const action = actionByKey[e.code]
+        console.log(e)
+        const action = actionByKey(e.code)
         if(actionByKey(e.code)){
             setActions((prev) => {
                 return ({
@@ -52,7 +53,7 @@ export const useKeyboard = () => {
     // setting ations on false
     
     const handleKeyUp = useCallback((e) =>{
-        const action = actionByKey[e.code]
+        const action = actionByKey(e.code)
         if(actionByKey(e.code)){
             setActions((prev) => {
                 return ({
@@ -69,7 +70,11 @@ export const useKeyboard = () => {
         // document.addEventListener('keydown', handleKeyDown);
         // document.addEventListener('keydown', handleKeyDown);
         // document.addEventListener('keydown', handleKeyDown);
-        return () => {}
+        return () => {
+            document.addEventListener('keydown', handleKeyDown);
+            document.addEventListener('keyup', handleKeyUp);
+            
+        }
     }, [handleKeyDown,handleKeyUp])
     
     return actions
